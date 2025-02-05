@@ -1,5 +1,6 @@
 import streamlit as st
 import requests
+import os
 
 
 api_key = os.getenv('API_KEY')
