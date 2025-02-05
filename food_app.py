@@ -2,12 +2,12 @@ import streamlit as st
 import requests
 
 
-API_KEY = ""
+api_key = os.getenv('API_KEY')
 BASE_URL = "https://api.spoonacular.com/recipes/complexSearch"
 
 def fetch_meals(diet, filters):
     params = {
-        "apiKey": API_KEY,
+        "apiKey": api_key,
         "diet": diet,
         "number": 5,
     }
@@ -21,7 +21,7 @@ def fetch_meals(diet, filters):
     
 def get_recipe_details(recipe_id):
     url = f"https://api.spoonacular.com/recipes/{recipe_id}/information"
-    params = {"apiKey": API_KEY,}
+    params = {"apiKey": api_key,}
     response = requests.get(url, params=params)
     if response.status_code == 200:
         return response.json().get("sourceUrl", "NO LINK AVAILABLE")
